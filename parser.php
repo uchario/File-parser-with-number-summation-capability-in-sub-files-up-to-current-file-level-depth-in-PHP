@@ -63,7 +63,7 @@ function fileNumberAdder() {
 
 function formatPrinter() {
     // print out the file names with the sum of sub files up to the file level in desired format
-    foreach($GLOBALS['allFilePathsArray'] as $allFilePathsKey => $allFilePathsVal) {
+    foreach(array_reverse($GLOBALS['allFilePathsArray']) as $allFilePathsKey => $allFilePathsVal) {
         echo "$allFilePathsKey - $allFilePathsVal" . "<br>";
     }
 }
