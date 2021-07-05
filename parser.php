@@ -69,6 +69,7 @@ function formatPrinter() {
 }
 
 // Start here...
+// Pass the name of the file to be parsed with the directory appended
 fileParser("c:/xampp/htdocs/ltk/a.txt");
 
 fileNumberAdder();
