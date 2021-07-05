@@ -53,21 +53,30 @@ function fileParser($inputPath) {
 
 }
 
+function fileNumberAdder() {
+    // loop through the file and sums up all number in subfiles up to the file itself
+    foreach($GLOBALS['allFilePathsArray'] as $x => $xVal) {
+        foreach($GLOBALS['allFilePathsArray'] as $y => $yVal) {
+            if (in_array($y, file($x, FILE_IGNORE_NEW_LINES))) {
+                $xVal += $yVal;
+                $GLOBALS['allFilePathsArray'][$x] = $xVal;
+            }
+        }
+
+    }
+}
+
+function formatPrinter() {
+    // print out the file names with the sum of sub files up to the file level in desired format
+    foreach($GLOBALS['allFilePathsArray'] as $allFilePathsKey => $allFilePathsVal) {
+        echo "$allFilePathsKey - $allFilePathsVal" . "<br>";
+    }
+}
+
 // Start here...
 fileParser("c:/xampp/htdocs/ltk/a.txt");
 
-// loop through the file and sums up all number in subfiles up to the file itself
-foreach($GLOBALS['allFilePathsArray'] as $x => $xVal) {
-    foreach($GLOBALS['allFilePathsArray'] as $y => $yVal) {
-        if (in_array($y, file($x, FILE_IGNORE_NEW_LINES))) {
-            $xVal += $yVal;
-            $GLOBALS['allFilePathsArray'][$x] = $xVal;
-        }
-    }
+fileNumberAdder();
 
-}
+formatPrinter();
 
-// print out the file names with the sum of sub files up to the file level in desired format
-foreach($GLOBALS['allFilePathsArray'] as $allFilePathsKey => $allFilePathsVal) {
-    echo "$allFilePathsKey - $allFilePathsVal" . "<br>";
-}
