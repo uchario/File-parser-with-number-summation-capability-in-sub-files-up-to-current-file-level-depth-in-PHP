@@ -19,10 +19,8 @@ function fileParser($inputPath) {
     // loop through the opened file to separate numbers from file names
     foreach($fileArray as $line => $val) {
         if (is_numeric($val)) {
-            // numeric values are collected in the $fileNumberArray
             array_push($fileNumberArray, (int)$val);
         } else {
-            // file names are collected in the $fileNameArray
             array_push($fileNameArray, $val);
         }
     }
@@ -30,9 +28,7 @@ function fileParser($inputPath) {
     // loop through the $fileNameArray and adds file names with at least one file name contained in it to the beginning of the $fileNameArray thus giving preference to file with file names contained in them
     foreach($fileNameArray as $fileNameKey => $fileNameVal) {
         foreach(file($fileNameVal, FILE_IGNORE_NEW_LINES) as $subFileNameKey => $subFileNameVal) {
-            // checks if a file names exists in the file
             if (!is_numeric($subFileNameVal)) {
-                // add the file name to the beginning of the $fileNameArray if a file names exists inside the file
                 array_unshift($fileNameArray, $fileNameVal);
                 break;
             }
@@ -44,7 +40,6 @@ function fileParser($inputPath) {
 
     // goes over the loop again to open file names contained within the current open file
     foreach($fileNameArray as $filePath => $val) {
-        // appends the directory name to each file before going over the loop
         fileParser($fileDirName . "/" . $val);
     }
 
