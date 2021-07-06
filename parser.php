@@ -79,5 +79,6 @@ function runParser($filePath) {
     formatPrinter();
 }
 
+// START HERE...
 // initiate runParser function with the desired file path input passed
 runParser("c:/xampp/htdocs/ltk/a.txt");
