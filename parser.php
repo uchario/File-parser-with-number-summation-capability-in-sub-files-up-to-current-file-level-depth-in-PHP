@@ -68,11 +68,16 @@ function formatPrinter() {
     }
 }
 
-// Start here...
-// Pass the name of the file to be parsed with the directory appended
-fileParser("c:/xampp/htdocs/ltk/a.txt");
 
-fileNumberAdder();
+// Single function that runs all three functions above to achieve desired output
+// $filePath is the input path to file to work with
+function runParser($filePath) {
+    fileParser($filePath);
 
-formatPrinter();
+    fileNumberAdder();
 
+    formatPrinter();
+}
+
+// initiate runParser function with the desired file path input passed
+runParser("c:/xampp/htdocs/ltk/a.txt");
